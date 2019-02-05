@@ -16,7 +16,7 @@ node ('master') {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
-   stage('Build') {
+   stage('Sonar report') {
       // Run the maven build
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore sonar:sonar -Dsonar.host.url=http://ip-172-31-19-220.ap-south-1.compute.internal:9000/"
