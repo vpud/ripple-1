@@ -16,6 +16,14 @@ node ('maven-label') {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
+   stage('Nexus repo') {
+      // Run the maven build
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' -Pripple-deploy -Dmaven.test.failure.ignore clean package"
+      } else {
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+      }
+   }
    stage('Sonar report') {
       // Run the maven build
       if (isUnix()) {
