@@ -18,6 +18,7 @@ node ('maven-label') {
    }
    stage('Nexus repo') {
       // Run the maven build
+      
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Pripple-deploy -Dmaven.test.failure.ignore clean deploy"
       } else {
