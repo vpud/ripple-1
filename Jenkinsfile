@@ -20,7 +20,7 @@ node ('maven-label') {
       // Run the maven build
       
       if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' -Pripple-deploy -Dmaven.test.failure.ignore clean deploy"
+         sh "'${mvnHome}/bin/mvn' -Pripple-deploy -DrepositoryId=ripple-snapshots clean deploy"
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
